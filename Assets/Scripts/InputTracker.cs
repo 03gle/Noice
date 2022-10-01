@@ -8,4 +8,9 @@ public class InputTracker : MonoBehaviour
     public List<Vector3> points;
 
 
+    private void OnAnimatorIK(int layerIndex)
+    {
+        
+    }
+
 }
