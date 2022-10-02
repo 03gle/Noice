@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distFromHit: 0
-  parameterName: E_Sample03
+  parameterName: H_Sample03
 --- !u!23 &123735024
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distFromHit: 0
-  parameterName: E_Sample05
+  parameterName: H_Sample05
 --- !u!23 &1292637151
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distFromHit: 0
-  parameterName: E_Sample02
+  parameterName: H_Sample02
 --- !u!23 &1332184396
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2059,7 +2059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distFromHit: 0
-  parameterName: E_Sample06
+  parameterName: H_Sample06
 --- !u!23 &1409517964
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2585,7 +2585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distFromHit: 0
-  parameterName: E_Sample01
+  parameterName: H_Sample01
 --- !u!23 &1658383757
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2980,7 +2980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distFromHit: 0
-  parameterName: E_Sample04
+  parameterName: H_Sample04
 --- !u!23 &1967459039
 MeshRenderer:
   m_ObjectHideFlags: 0

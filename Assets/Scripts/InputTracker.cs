@@ -54,7 +54,8 @@ public class InputTracker : MonoBehaviour
 
     private void Update()
     {
-        // Trigger Effects
+        // ------------------------> Trigger Effects <------------------------
+
         //float eL = triggerL.action.ReadValue<float>();
         //eventInstanceL.setParameterByName("L_Effect", eL);
 
