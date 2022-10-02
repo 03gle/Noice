@@ -45,21 +45,22 @@ public class InputTracker : MonoBehaviour
         eventInstanceL = FMODUnity.RuntimeManager.CreateInstance(eventRefL);
         eventInstanceL.start();
 
-        //eventInstanceR = FMODUnity.RuntimeManager.CreateInstance(eventRefR);
-        //eventInstanceR.start();
+        eventInstanceR = FMODUnity.RuntimeManager.CreateInstance(eventRefR);
+        eventInstanceR.start();
 
-        //eventInstanceE = FMODUnity.RuntimeManager.CreateInstance(eventRefE);
-        //eventInstanceE.start();
+        eventInstanceE = FMODUnity.RuntimeManager.CreateInstance(eventRefE);
+        eventInstanceE.start();
     }
 
     private void Update()
     {
+        // Trigger Effects
         //float eL = triggerL.action.ReadValue<float>();
         //eventInstanceL.setParameterByName("L_Effect", eL);
 
         //float eR = triggerR.action.ReadValue<float>();
         //eventInstanceR.setParameterByName("R_Effect", eR);
-        
+
         RaycastHit hit;
 
         // Left hand
@@ -93,57 +94,57 @@ public class InputTracker : MonoBehaviour
         }
 
         // Right hand
-        //if (Physics.Raycast(rightController.position, rightController.forward, out hit, 100, layerMask))
-        //{
-        //    hitR = hit.point;
-        //    Debug.DrawRay(rightController.position, rightController.forward * hit.distance, Color.green);
+        if (Physics.Raycast(rightController.position, rightController.forward, out hit, 100, layerMask))
+        {
+            hitR = hit.point;
+            Debug.DrawRay(rightController.position, rightController.forward * hit.distance, Color.green);
 
-        //    foreach (TrackingPoint tp in trackingPointsR)
-        //    {
-        //        tp.distFromHit = ArchDistance(hitR, tp.transform.position);
-        //    }
+            foreach (TrackingPoint tp in trackingPointsR)
+            {
+                tp.distFromHit = ArchDistance(hitR, tp.transform.position);
+            }
 
-        //    trackingPointsR.Sort((p1, p2) => p1.distFromHit.CompareTo(p2.distFromHit));
+            trackingPointsR.Sort((p1, p2) => p1.distFromHit.CompareTo(p2.distFromHit));
 
-        //    for (int i = 0; i < trackingPointsR.Count; i++)
-        //    {
-        //        if (i < pointInfluenceLimit)
-        //        {
-        //            var res = eventInstanceR.setParameterByName(trackingPointsR[i].parameterName, Blend(trackingPointsR, i), true);
-        //        }
-        //        else
-        //        {
-        //            eventInstanceR.setParameterByName(trackingPointsR[i].parameterName, 0, true);
-        //        }
-        //    }
-        //}
+            for (int i = 0; i < trackingPointsR.Count; i++)
+            {
+                if (i < pointInfluenceLimit)
+                {
+                    var res = eventInstanceR.setParameterByName(trackingPointsR[i].parameterName, Easing.Ease(Blend(trackingPointsL, i), transitionType), false);
+                }
+                else
+                {
+                    eventInstanceR.setParameterByName(trackingPointsR[i].parameterName, 0, false);
+                }
+            }
+        }
 
 
-        //// Eyes
-        //if (Physics.Raycast(eyes.position, eyes.forward, out hit, 100, layerMask))
-        //{
-        //    hitE = hit.point;
-        //    Debug.DrawRay(eyes.position, eyes.forward * hit.distance, Color.blue);
+        // Eyes
+        if (Physics.Raycast(eyes.position, eyes.forward, out hit, 100, layerMask))
+        {
+            hitE = hit.point;
+            Debug.DrawRay(eyes.position, eyes.forward * hit.distance, Color.blue);
 
-        //    foreach (TrackingPoint tp in trackingPointsE)
-        //    {
-        //        tp.distFromHit = ArchDistance(hitE, tp.transform.position);
-        //    }
+            foreach (TrackingPoint tp in trackingPointsE)
+            {
+                tp.distFromHit = ArchDistance(hitE, tp.transform.position);
+            }
 
-        //    trackingPointsE.Sort((p1, p2) => p1.distFromHit.CompareTo(p2.distFromHit));
+            trackingPointsE.Sort((p1, p2) => p1.distFromHit.CompareTo(p2.distFromHit));
 
-        //    for (int i = 0; i < trackingPointsE.Count; i++)
-        //    {
-        //        if (i < pointInfluenceLimit)
-        //        {
-        //            var res = eventInstanceE.setParameterByName(trackingPointsE[i].parameterName, Blend(trackingPointsE, i), true);
-        //        }
-        //        else
-        //        {
-        //            eventInstanceR.setParameterByName(trackingPointsE[i].parameterName, 0, true);
-        //        }
-        //    }
-        //}
+            for (int i = 0; i < trackingPointsE.Count; i++)
+            {
+                if (i < pointInfluenceLimit)
+                {
+                    var res = eventInstanceE.setParameterByName(trackingPointsE[i].parameterName, Easing.Ease(Blend(trackingPointsL, i), transitionType), false);
+                }
+                else
+                {
+                    eventInstanceR.setParameterByName(trackingPointsE[i].parameterName, 0, false);
+                }
+            }
+        }
 
     }
 
