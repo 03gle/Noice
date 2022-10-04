@@ -40,6 +40,8 @@ public class InputTracker : MonoBehaviour
 
     public Easing.Type transitionType;
 
+    public Material vertexDisplacementMat;
+
     private void Start()
     {
         eventInstanceL = FMODUnity.RuntimeManager.CreateInstance(eventRefL);
@@ -70,6 +72,8 @@ public class InputTracker : MonoBehaviour
             hitL = hit.point;
             Debug.DrawRay(leftController.position, leftController.forward * hit.distance, Color.red);
 
+            vertexDisplacementMat.SetVector("_HitLeft", hitL);
+
             foreach (TrackingPoint tp in trackingPointsL)
             {
                 tp.distFromHit = ArchDistance(hitL, tp.transform.position);
@@ -91,7 +95,6 @@ public class InputTracker : MonoBehaviour
                     eventInstanceL.setParameterByName(trackingPointsL[i].parameterName, 0, false);
                 }
             }
-            
         }
 
         // Right hand
@@ -99,6 +102,8 @@ public class InputTracker : MonoBehaviour
         {
             hitR = hit.point;
             Debug.DrawRay(rightController.position, rightController.forward * hit.distance, Color.green);
+
+            vertexDisplacementMat.SetVector("_HitRight", hitR);
 
             foreach (TrackingPoint tp in trackingPointsR)
             {
@@ -126,6 +131,8 @@ public class InputTracker : MonoBehaviour
         {
             hitE = hit.point;
             Debug.DrawRay(eyes.position, eyes.forward * hit.distance, Color.blue);
+
+            vertexDisplacementMat.SetVector("_HitEyes", hitE);
 
             foreach (TrackingPoint tp in trackingPointsE)
             {
